@@ -1,0 +1,9 @@
+<form action="{% url 'books:addbook' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="book_title" value="{{book.volumeInfo.title}}">
+    <input type="hidden" name="book_author" value="{{book.volumeInfo.authors|cut:"["|cut:"]"|cut:"'"}}">
+    <input type="hidden" name="book_categories" value="{{book.volumeInfo.categories|cut:"["|cut:"]"|cut:"'"}}">
+    <input type="hidden" name="book_description" value="{{book.volumeInfo.description | striptags }}">
+    <input type="hidden" name="book_image" value="{{book.volumeInfo.imageLinks.thumbnail}}">
+    <button type="submit" class="btn btn-warning"> Guardar </button>
+</form>

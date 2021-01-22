@@ -1,0 +1,28 @@
+<table class="table table-hover mt-4">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Author</th>
+            <th scope="col">Categoria</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td scope="row" name="id">{{forloop.counter}}</td>
+            <td scope="row">{{book.volumeInfo.title}}</td>
+            <td scope="row">{{book.volumeInfo.authors|cut:"["|cut:"]"|cut:"'"}}</td>
+            <td scope="row">{{book.volumeInfo.categories|cut:"["|cut:"]"|cut:"'"}}</td>
+            <td scope="row">
+                <a href="{% url 'books:bookdetail' arg1=book.id %}" value class="btn btn-primary">Ver</a>
+                {% include 'books/snippets/add.html' %}
+            </td>
+        </tr>
+
+        
+        
+        {% endfor %}
+    </tbody>
+</table>

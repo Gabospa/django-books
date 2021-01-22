@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-4">Busca un nuevo libro!</h1>
+    <p class="lead"> Selecciona tu libro y agregalo a tu colección</p>
+    <hr class="my-4">
+</div>
+    {% include 'books/snippets/search.html' %}
+    <div class="col mt-2">
+
+        {% include 'books/snippets/apilist.html' %}
+    </div>
+{% endblock %}

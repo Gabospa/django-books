@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row mt-3">
+    <div class="col-3 row align-items-center">
+        {% if book.imageLinks %}
+            <img src="{{book.imageLinks.thumbnail}}" alt="Imagen Small Libro">
+        {% endif %}
+    
+    </div>
+    
+    <div class="col-8">
+        <div class="h2">{{book.title}}</div>
+        <div class="h4">{{book.authors|cut:"["|cut:"]"|cut:"'" }}</div>
+        <div class="h4">{{book.categories|cut:"["|cut:"]"|cut:"'"}}</div>
+        <div class="">
+            <p>{{book.description|striptags}}</p>
+        </div>
+        
+        <div class="row justify-content-start">
+            <div class="col-2">
+                {% include 'books/snippets/addDetail.html' %}
+            </div>
+            <div class="col-1">
+                <a href="{% url 'goback' %}" value class="btn btn-primary">Cancelar</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}  
